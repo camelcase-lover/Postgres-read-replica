@@ -42,3 +42,9 @@ Instead of configuring replication manually step-by-step, `replica.sh` handles e
    sudo ./replica.sh
 
 Sit, relax, sip coffee as magic happens.
+
+
+## Screenshots
+
+![Screenshot1](./Screenshot_2026-09-30_23-56-53.png)
+![Screenshot2](./working_script.png)
