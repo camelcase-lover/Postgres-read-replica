@@ -51,11 +51,6 @@ while [ "$number" -ne 0 ]; do
             echo "Error: pg_basebackup failed! Aborting replica creation."
             continue
         fi
-
-        if [ ! -f /var/lib/postgresql/$PG_VERSION/replica/PG_VERSION ]; then
-            echo "Error: Replica data directory integrity check failed. Aborting.."
-            continue
-        fi
         
         echo "Copying pg_hba.conf to replica directory"
         sudo cp /etc/postgresql/$PG_VERSION/main/pg_hba.conf /var/lib/postgresql/$PG_VERSION/replica/
@@ -69,11 +64,6 @@ port = 5433
 listen_addresses = '127.0.0.1'
 hot_standby = on
 EOF
-
-        if [ ! -f /var/lib/postgresql/$PG_VERSION/replica/PG_VERSION ]; then
-            echo "Error: Replica data directory integrity check failed. Aborting."
-            continue
-        fi
 
         echo "Setting ownership to postgres user."
         sudo chown -R postgres:postgres /var/lib/postgresql/$PG_VERSION/replica
